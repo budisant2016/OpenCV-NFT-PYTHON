@@ -3,6 +3,10 @@ import cv2
 import random
 import cvzone
 import random_name_generator as rng
+from pathlib import Path
+
+# Build paths inside the project like this: BASE_DIR / 'subdir'.
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Take the input of NFT you want
 def overlay_transparent(background_img, img_to_overlay_t, x, y, overlay_size=None):
@@ -57,15 +61,15 @@ i = 0
 while i <= number_of_nft:
     # Add the Background
     #bg_i = random.randint(1,11)
-    addr_bg = 'D:/NFT/myAsset/background/bg_' + str(random.randint(1,11)) + '.png'
+    addr_bg = f'{BASE_DIR}/myAsset/background/bg{str(random.randint(1,11))}.png'
     bg_img = cv2.imread(addr_bg)
     #print(bg_img.shape)
-    body_img = cv2.imread('D:/NFT/myAsset/body/body_'+str(random.randint(1,11))+'.png',cv2.IMREAD_UNCHANGED)
-    eye_img = cv2.imread('D:/NFT/myAsset/eye/eye_'+str(random.randint(1,11))+'.png',cv2.IMREAD_UNCHANGED)
-    glass_img = cv2.imread('D:/NFT/myAsset/glasses/glass_'+str(random.randint(1,11))+'.png',cv2.IMREAD_UNCHANGED)
-    nose_img = cv2.imread('D:/NFT/myAsset/nose/nose_'+str(random.randint(1,11))+'.png',cv2.IMREAD_UNCHANGED)
-    lips_img = cv2.imread('D:/NFT/myAsset/lips/lips_'+str(random.randint(1,11))+'.png',cv2.IMREAD_UNCHANGED)
-    shirt_img = cv2.imread('D:/NFT/myAsset/shirt/shirt_'+str(random.randint(1,11))+'.png',cv2.IMREAD_UNCHANGED)
+    body_img = cv2.imread(f'{BASE_DIR}/myAsset/body/body_{str(random.randint(1,11))}.png',cv2.IMREAD_UNCHANGED)
+    eye_img = cv2.imread(f'{BASE_DIR}/myAsset/eye/eye_{str(random.randint(1,11))}.png',cv2.IMREAD_UNCHANGED)
+    glass_img = cv2.imread(f'{BASE_DIR}/myAsset/glasses/glass_{str(random.randint(1,11))}.png',cv2.IMREAD_UNCHANGED)
+    nose_img = cv2.imread(f'{BASE_DIR}myAsset/nose/nose_{str(random.randint(1,11))}.png',cv2.IMREAD_UNCHANGED)
+    lips_img = cv2.imread(f'{BASE_DIR}/myAsset/lips/lips_{str(random.randint(1,11))}.png',cv2.IMREAD_UNCHANGED)
+    shirt_img = cv2.imread(f'{BASE_DIR}/myAsset/shirt/shirt_{str(random.randint(1,11))}.png',cv2.IMREAD_UNCHANGED)
     
     step_1 = overlay_transparent(bg_img,body_img,0,0)
     #print(step_1.shape)
@@ -79,5 +83,5 @@ while i <= number_of_nft:
     #out = rng.generate(descent=rng.Descent.ENGLISH, sex=rng.Sex.MALE, limit=1)
     #print(out)
     
-    cv2.imwrite('D:/NFT/output/image'+str(i)+'.png',step_6)
+    cv2.imwrite(f'{BASE_DIR}/output/image{str(i)}.png',step_6)
     i+=1

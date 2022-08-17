@@ -8,6 +8,7 @@ numpy = "*"
 cv2-tools = "*"
 cvzone = "*"
 random-name-generator = "*"
+pathlib = "*"
 
 [dev-packages]
 
